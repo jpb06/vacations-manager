@@ -11,7 +11,7 @@
   "author": {
     "name": "jpb"
   },
-  "main": "dist/js/vacationsmanagerfrontendapijs",
+  "main": "dist/js/vacations-manager-frontend-api.js",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",

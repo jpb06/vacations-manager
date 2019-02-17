@@ -1,3 +1,0 @@
-﻿# vacations-manager-frontend-api
-
-

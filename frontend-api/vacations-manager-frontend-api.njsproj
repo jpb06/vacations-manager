@@ -38,21 +38,16 @@
     <TypeScriptCompile Include="src\caching\cache.service.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\extends\request.extend.ts">
+    <TypeScriptCompile Include="src\middleware\extends\request.extend.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\extends\response.extend.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\handlers\errors.handlers.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\interfaces\error.interface.ts">
+    <TypeScriptCompile Include="src\middleware\extends\response.extend.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\middleware\extends.implementation.middleware.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\middleware\handlers\errors.handlers.ts" />
     <TypeScriptCompile Include="src\routes\default.routes.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -70,11 +65,11 @@
     <Folder Include="project-apparatus\util\" />
     <Folder Include="project-apparatus\tasks\" />
     <Folder Include="src\" />
-    <Folder Include="src\interfaces\" />
-    <Folder Include="src\handlers\" />
-    <Folder Include="src\extends\" />
+    <Folder Include="src\middleware\extends\" />
     <Folder Include="src\caching\" />
     <Folder Include="src\middleware\" />
+    <Folder Include="src\middleware\handlers\" />
+    <Folder Include="src\dal\" />
     <Folder Include="src\routes\" />
   </ItemGroup>
   <ItemGroup>

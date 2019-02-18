@@ -4,7 +4,7 @@ import { Express, Request, Response } from "express-serve-static-core";
 import * as bodyParser from "body-parser"; // pull information from HTML POST (express4)
 import * as cors from 'cors';
 
-import { setErrorsHandlers } from './handlers/errors.handlers';
+import { setErrorsHandlers } from './middleware/handlers/errors.handlers';
 import { mapDefaultRoutes } from './routes/default.routes';
 import { mapSecurityRoutes } from './routes/security.routes';
 import { extendsImplementation } from './middleware/extends.implementation.middleware';

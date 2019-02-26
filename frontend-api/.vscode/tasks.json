@@ -4,8 +4,23 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "type": "gulp",
+            "task": "clean",
+            "problemMatcher": []
+        },
+        {
+            "type": "gulp",
+            "task": "build-dev",
+            "problemMatcher": []
+        },
+        {
+            "type": "gulp",
+            "task": "use-dev-config",
+            "problemMatcher": []
+        },
+        {
             "type": "npm",
-            "script": "clean",
+            "script": "builddev", 
             "problemMatcher": []
         }
     ]

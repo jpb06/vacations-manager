@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm run builddev && node dist/js/vacations-manager-frontend-api",
     "clean": "gulp clean",
-    "builddev": "gulp clean && gulp build-dev",
+    "builddev": "gulp clean && gulp use-dev-config && gulp build-dev",
     "release": "gulp clean && gulp build-release"
   },
   "description": "vacations-manager-frontend-api",

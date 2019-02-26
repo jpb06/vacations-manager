@@ -1,4 +1,5 @@
 ﻿const gulp = require('gulp');
+const gulpif = require('gulp-if');
 const ts = require("gulp-typescript");
 const sourcemaps = require('gulp-sourcemaps');
 const merge = require('merge2');
@@ -6,22 +7,24 @@ const merge = require('merge2');
 const consoleUtil = require('./../util/console.util.js');
 
 tscBuild = async function (
-    generateTypings
+    generateTypings,
+    generateSourceMaps
 ) {
-    consoleUtil.printHeader('Building prooject [typescript:src -> js:dist] ...');
+    consoleUtil.printHeader('Building project [typescript:src -> js:dist] ...');
 
     let tsProject = ts.createProject('./tsconfig.json');
     let reporter = ts.reporter.fullReporter();
     let tsResult = tsProject.src()
-        .pipe(sourcemaps.init())
+        .pipe(gulpif(generateSourceMaps === true, sourcemaps.init()))
         .pipe(tsProject(reporter));
 
     return new Promise((resolve, reject) => {
 
         if (generateTypings === true) {
             let stream = merge(
+
                 tsResult.js
-                    .pipe(sourcemaps.write('.'))
+                    .pipe(gulpif(generateSourceMaps === true, sourcemaps.write('.')))
                     .pipe(gulp.dest("./dist/js"))
                     .on('error', reject)
                 ,
@@ -33,8 +36,9 @@ tscBuild = async function (
             resolve(stream);
 
         } else {
+      
             tsResult.js
-                .pipe(sourcemaps.write('.'))
+                .pipe(gulpif(generateSourceMaps === true, sourcemaps.write('.')))
                 .pipe(gulp.dest("./dist/js"))
                 .on('error', reject)
                 .on('end', resolve);

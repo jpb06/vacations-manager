@@ -353,3 +353,4 @@ ASALocalRun/
 .localhistory/
 
 dist/
+/frontend-api/src/config

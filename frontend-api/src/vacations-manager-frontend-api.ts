@@ -9,6 +9,14 @@ import { mapDefaultRoutes } from './routes/default.routes';
 import { mapSecurityRoutes } from './routes/security.routes';
 import { extendsImplementation } from './middleware/extends.implementation.middleware';
 
+import * as ConfigData from './config/current.config.json';
+import { Config } from './config/config.interface';
+import { DalConfiguration } from './dal/configuration/dal.configuration';
+
+// first converting to unknown then to the type we want
+let mainConfig = (<Config><unknown>ConfigData);
+DalConfiguration.Setup(mainConfig);
+
 console.log('--------------------------------------------------------------------------------');
 console.log('Starting application ...');
 console.log('--------------------------------------------------------------------------------');
@@ -16,7 +24,7 @@ console.log('-------------------------------------------------------------------
 
 let app: Express = express();
 app.use(cors({
-    //origin: 'localhost',
+    origin: mainConfig.srvURLs,
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }));
 app.use(bodyParser.json());

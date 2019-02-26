@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceFolder}\\dist\\js\\vacations-manager-frontend-api.js",
-            "preLaunchTask": "tsc: build - tsconfig.json",
+            "preLaunchTask": "npm: build", //" && tsc: build - tsconfig.json",
             "outFiles": [
                 "${workspaceFolder}/dist/js/**/*.js"
             ]

@@ -16,7 +16,7 @@ export abstract class RolesStore {
         return result;
     }
 
-    public static async findByName(
+    public static async getByName(
         name: string
     ) {
 

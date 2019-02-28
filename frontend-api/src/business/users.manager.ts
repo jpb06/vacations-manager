@@ -15,13 +15,15 @@ export abstract class UsersManager {
         serviceName: string
     ): Promise<boolean> {
 
+        // checking first if email is not already being used
         let usersWithEmail = await UsersStore.getByEmail(email);
         if (usersWithEmail.length > 0) {
             throw new BusinessError(`The email ${email} is already used`, ErrorCode.EmailAlreadyExists);
         }
 
+        // mapping roles: creating default user role if it doesn't exist
         let role: DbRole;
-        let matchingUserRoles = await RolesStore.findByName('user');
+        let matchingUserRoles = await RolesStore.getByName('user');
         if (matchingUserRoles.length === 0) {
             role = {
                 _id: new ObjectId(),
@@ -38,6 +40,7 @@ export abstract class UsersManager {
         // todo = hashing mechanism
         let hashedPassword = password;
 
+        // persisting user
         let result = await UsersStore.create({
             _id: new ObjectId(),
             roles: [role._id],

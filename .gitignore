@@ -354,3 +354,7 @@ ASALocalRun/
 
 dist/
 /frontend-api/src/config
+
+frontend/\.vscode/
+
+frontend/package-lock\.json

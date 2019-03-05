@@ -35,7 +35,43 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\business\errors\business.error.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\business\security\crypto.util.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\business\users.manager.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\caching\cache.service.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\config\config.interface.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\dal\configuration\dal.configuration.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\dal\manipulation\mongodb\dal.generic.store.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\dal\manipulation\mongodb\stores\roles.store.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\dal\manipulation\mongodb\stores\users.store.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\dal\manipulation\mongodb\stores\vacations.store.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\dal\types\complex.types.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\dal\types\embedded.types.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\dal\types\persisted.types.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\middleware\extends\request.extend.ts">
@@ -55,9 +91,21 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <Content Include="package-lock.json" />
+    <Content Include="src\config\current.config.json">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\config\dev.config.json">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\config\prod.config.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="tsconfig.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <TypeScriptCompile Include="src\typings.d.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\vacations-manager-frontend-api.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -65,11 +113,20 @@
     <Folder Include="project-apparatus\util\" />
     <Folder Include="project-apparatus\tasks\" />
     <Folder Include="src\" />
+    <Folder Include="src\business\errors\" />
+    <Folder Include="src\dal\manipulation\" />
+    <Folder Include="src\dal\manipulation\mongodb\" />
+    <Folder Include="src\dal\configuration\" />
+    <Folder Include="src\dal\manipulation\mongodb\stores\" />
+    <Folder Include="src\dal\types\" />
     <Folder Include="src\middleware\extends\" />
     <Folder Include="src\caching\" />
     <Folder Include="src\middleware\" />
     <Folder Include="src\middleware\handlers\" />
     <Folder Include="src\dal\" />
+    <Folder Include="src\config\" />
+    <Folder Include="src\business\" />
+    <Folder Include="src\business\security\" />
     <Folder Include="src\routes\" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +134,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="gulpfile.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="project-apparatus\tasks\config-switcher.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="project-apparatus\tasks\tsc.build.task.js">

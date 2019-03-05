@@ -12,10 +12,12 @@ import { extendsImplementation } from './middleware/extends.implementation.middl
 import * as ConfigData from './config/current.config.json';
 import { Config } from './config/config.interface';
 import { DalConfiguration } from './dal/configuration/dal.configuration';
+import { Configuration as VaultConfiguration } from 'rsa-vault';
 
 // first converting to unknown then to the type we want
 let mainConfig = (<Config><unknown>ConfigData);
 DalConfiguration.Setup(mainConfig);
+VaultConfiguration.Setup(mainConfig);
 
 console.log('--------------------------------------------------------------------------------');
 console.log('Starting application ...');

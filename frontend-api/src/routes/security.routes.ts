@@ -8,6 +8,7 @@ import { BusinessError } from "../business/errors/business.error";
 import * as CryptoUtil from './../business/security/crypto.util';
 
 import { ApplicationKeys } from "rsa-vault/typings/types.export";
+import { User } from "../dal/types/complex.types";
 
 const sessionDuration = 1200;
 
@@ -25,23 +26,30 @@ export function mapSecurityRoutes(
                 return res.sendGenericError(400, 'Expecting identifiers');
             }
 
-            let user = await UsersManager.getByEmail(req.body.login);
+            let user: User = await UsersManager.getByEmail(req.body.login);
 
             let isPasswordValid = await CryptoUtil.verify(req.body.password, user.hashedPassword);
             if (isPasswordValid) {
                 let keys: ApplicationKeys = await VaultService.GetKeyPair('vacations-manager');
 
-                let expirationDate = moment().add(sessionDuration, 'seconds');
-
-                const jwtBearerToken = jwt.sign({ guild: req.body.login }, keys.privateKey, {
+                const jwtBearerToken = jwt.sign({
+                    sub: user.email
+                }, keys.privateKey, {
                     algorithm: 'RS256',
                     expiresIn: sessionDuration
                 });
 
+                let expirationDate = moment().add(sessionDuration, 'seconds');
+
                 return res.status(200).json({
                     status: 200,
                     token: jwtBearerToken,
-                    roles: user.roles,
+                    user: {
+                        lastname: user.lastname,
+                        firstname: user.firstname,
+                        service: user.serviceName,
+                        roles: user.roles,
+                    },
                     expirationDate: JSON.stringify(expirationDate)
                 });
             } else {
